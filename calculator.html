@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Web Calculator</title>
+    <link rel="stylesheet" href="calculator.css">
+</head>
+<body>
+<div id="wholePage">
+    <h1>Calculator</h1>
+    <div id="inputSection">
+        <section id="firstOpSection">
+            <label for="firstOperand">Enter first number</label>
+            <input type="number" id="firstOperand" placeholder="Enter first number"><br>
+        </section>
+        <section id="secondOpSection">
+            <label for="secondOperand">Enter second number</label>
+            <input type="number" id="secondOperand" placeholder="Enter second number"><br>
+        </section>
+    </div>
+
+    <section id="operationSection">
+        <input type="radio" id="addBtn" name="operation" value="add">
+        <label for="addBtn">Add</label><br>
+
+        <input type="radio" id="subtractBtn" name="operation" value="subtract">
+        <label for="subtractBtn">Subtract</label><br>
+
+        <input type="radio" id="multiplyBtn" name="operation" value="multiply">
+        <label for="multiplyBtn">Multiply</label><br>
+
+        <input type="radio" id="divideBtn" name="operation" value="divide">
+        <label for="divideBtn">Divide</label><br>
+    </section>
+
+    <button id="calculateBtn" onClick="calculate()">Calculate</button><br><br>
+
+    <section id="resultSection">
+        <label>Result</label><br>
+        <textarea id="resultBox" readonly>Your result appears here</textarea>
+    </section>
+</div>
+
+</body>
+<footer>
+    <script src="calculator.js"></script>
+</footer>
+</html>

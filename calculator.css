@@ -1,0 +1,20 @@
+#wholePage {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#inputSection {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+#firstOperand, #secondOperand {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
