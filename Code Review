@@ -1,0 +1,34 @@
+The python code was reviewed and these issues have been detected and given feedback for:
+
+. Signature header verification is flawed
+
+  The signature header verification uses simple string comparisons in line 20 and should use a constant-time comparison like hmac.compare_digest() instead. 
+  Additionally, the body should not be decoded before hashing as done in line 18.
+
+. Database is vulnerable to SQL Injection
+
+  The email and role information come directly from the payload and are susceptible to SQL injection attacks that could allow unauthorized database actions.
+  Parameterized queries should be implemented instead of the current query in line 41.
+
+. Insufficient upsert implementation
+
+  Lines 44 through 47 are meant to upsert user data after parsing the retrieved JSON. 
+  However, only a standard insertion is being conducted, while an update should also occur in the event of finding a duplicate object aka upsertion. 
+  There needs to be an ON CONFLICT clause after line 45 to implement the desired upsertion.
+
+. Database connections are never closed
+
+  There is no db.close() statement to close the SQLite connection. Furthermore, if an exception were to occur before db.commit() was ran, 
+  the current connection would remain open and missing a commit.
+
+. Lack of input validation 
+
+  After the payload is retrieved the JSON and its contents are not validated. This can cause empty/improper information to enter the database. 
+  First, the JSON should be validated. Then, the fields of the payload should be separately validated.
+
+. Lack of security measures
+
+  The payload size is not limited, which can allow for DoS attacks from huge payloads. 
+  There is no rate limiting implemented, so potential attackers can spam our endpoint. 
+  
+  
