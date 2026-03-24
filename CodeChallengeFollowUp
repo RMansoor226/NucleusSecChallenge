@@ -1,0 +1,127 @@
+1. I was able to make a fully working web calculator app that could handle performing basic arithmetic operations between two inputted numeric operands.
+2. My biggest challenge was finding the easiest way to make an intuitive calculator within 50 minutes. 
+Initially, I wanted to make a grid-based num-pad that would resemble a traditional calculator and only have the user input one operand at a time similar to most digital calculator apps. 
+However, this proved too complicated to complete within 50 minutes.
+3. If I was given unlimited time, the first additional functionality I would include would be a num-pad based GUI that would be more intuitive to use. 
+Furthermore, I would make the front-end in React instead to allow a single page web calculator with different pages for a simple calculator, scientific calculator, etc.
+Moreover, I would add in a more robust backend in a framework like Node or Express to enhance the input valdiation of the application.
+4. AI Prompts
+
+    a. Prompt: I have to construct a web application calculator for a coding challenge within 50 mins as listed here: For the below coding exercise, there is no expectation that you will have a fully working solution. For anything you feel you didn't accomplish, please let us know in the follow-up section after the exercise.
+
+Exercise
+Build a calculator web application. It should include a frontend piece and any backend logic needed to perform the calculations.
+
+You can use any language of your choosing for both the frontend and backend code. Is using React to include modular components via custom buttons in a button pad that call methods to perform basic arithmetic in a GUI similar to google calculator practical for a 50min coding challenge? If not, then is a more simple approach like a basic HTML/CSS/JavaScript stack with 2 fields for operands, 4 buttons to select an operation, and a calculate button to show a result more practical?
+    b. Prompt Response: If you’ve only got **50 minutes**, the smartest move is to optimize for **completeness**, **clarity**, and **low cognitive overhead**. A coding challenge like this isn’t testing whether you can architect a production‑grade UI framework — it’s testing whether you can deliver a working solution under time pressure.
+
+Let me break it down in a way that helps you make the best strategic choice.
+
+---
+
+# ⚡ **Short Answer: React is NOT practical for a 50‑minute calculator challenge. Basic HTML/CSS/JS absolutely is.**
+
+And here’s why.
+
+---
+
+# 🧠 **Why React is the wrong tool for a 50‑minute timed challenge**
+
+React is amazing — but it’s not optimized for speed when you’re starting from scratch.
+
+To build even a simple calculator in React, you’d need to:
+
+- Initialize a React project (Vite, CRA, or manual bundler setup)
+- Create components (ButtonPad, Display, App)
+- Manage state for:
+  - current input
+  - previous input
+  - selected operator
+  - edge cases (decimal, negative, clear, chaining operations)
+- Wire up event handlers
+- Style the layout
+- Debug inevitable state bugs (React calculators are notorious for them)
+
+Even if you’re fast, this burns **20–30 minutes** before you even get to the arithmetic logic.
+
+And if something breaks, debugging React state under time pressure is rough.
+
+---
+
+# 🟢 **Why a simple HTML/CSS/JavaScript approach is perfect**
+
+A basic web page with:
+
+- Two `<input>` fields for operands
+- A dropdown or four buttons for +, −, ×, ÷
+- A “Calculate” button
+- A `<div>` to show the result
+
+…can be built in **10–15 minutes** and works flawlessly.
+
+You can even add:
+
+- Basic validation
+- Keyboard support
+- Light styling
+
+And still finish with time to spare.
+
+This approach shows:
+
+- You can build a functional web app
+- You understand DOM manipulation
+- You can write clean, testable logic
+- You can deliver under time constraints
+
+Which is exactly what the challenge is evaluating.
+
+---
+
+# 🧩 **What the evaluator actually wants to see**
+
+They’re not grading you on:
+
+- Framework choice  
+- Component architecture  
+- Pixel‑perfect UI  
+
+They *are* grading you on:
+
+- Can you deliver a working solution?
+- Can you structure code cleanly?
+- Can you solve a problem under time pressure?
+- Can you communicate what you didn’t finish?
+
+A simple HTML/JS calculator checks all those boxes.
+
+---
+
+# 🥇 **The winning strategy**
+
+### **Go with the simple HTML/CSS/JS version.**
+
+It lets you:
+
+- Finish the core functionality quickly
+- Add small enhancements if time remains
+- Avoid framework setup overhead
+- Avoid React state bugs
+- Show clear separation of concerns (UI vs logic)
+- Leave a clean follow‑up note about what you’d improve with more time
+
+This is the approach that maximizes your score.
+
+---
+
+# 🎯 **If you want, I can help you:**
+
+- Sketch the structure of the HTML/JS version  
+- Outline the functions you need  
+- Suggest optional enhancements if time remains  
+- Prepare a follow‑up explanation for the “what I didn’t finish” section  
+
+Just say the word and I’ll help you prep efficiently.
+
+  c. Reflection:
+      The AI did a good job at providing a report of pros/cons to foresee the issues with either approach I proposed to it. It did great in helping me select an efficient problem-solving method by analyzing its eventual benefits and drawbacks.
