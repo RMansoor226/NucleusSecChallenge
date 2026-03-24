@@ -1,3 +1,4 @@
+// DOM elements 
 const firstOperand = document.getElementById("firstOperand");
 const secondOperand = document.getElementById("secondOperand");
 const addButton = document.getElementById("addBtn");
@@ -6,23 +7,22 @@ const multiplyButton = document.getElementById("multiplyBtn");
 const divideButton = document.getElementById("divideBtn");
 const resultBox = document.getElementById("resultBox");
 
+// Used to retrieve the actual numeric value from a user's string input in the text fields.
 function retrieveNumber(number) {
-    // console.log("number is: " + number);
     let realNumber = null;
+    // Check to make sure the user entered a number
     try {
-        // console.log("number.value is: " + number.value);
         realNumber = parseFloat(number.value);
     }   catch (e) {
         alert("Error: Enter a valid number for the operands");
         return;
     }
-    // console.log("The returned value is: " + realNumber);
     return realNumber;
 }
 
+// Arithmetic operations
+
 function add() {
-    console.log(firstOperand.value);
-    // console.log("First thing added is: " + retrieveNumber(firstOperand));
     return (retrieveNumber(firstOperand) + retrieveNumber(secondOperand));
 }
 
@@ -35,6 +35,7 @@ function multiply() {
 }
 
 function divide() {
+    // Check user did not divide by 0
     if (retrieveNumber(secondOperand) === 0) {
         alert("Error: Can not divide by 0");
         return null;
@@ -42,6 +43,7 @@ function divide() {
     return (retrieveNumber(firstOperand) / retrieveNumber(secondOperand));
 }
 
+// Select arithmetic operation depending on which radio button is checked
 function calculate() {
     let result = 0;
     if (addButton.checked) {
@@ -51,6 +53,7 @@ function calculate() {
     }   else if (multiplyButton.checked) {
         result = multiply();
     }   else if (divideButton.checked) {
+        // Return nothing if user divided by 0
         if (divide() === null) {
             return;
         }
@@ -59,7 +62,6 @@ function calculate() {
         alert("Error: You must select an operation before trying to calculate");
         return;
     }
-
     resultBox.textContent = result;
 }
 
