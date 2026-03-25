@@ -1,6 +1,11 @@
+
 AI Prompts: 
 
-1st Prompt: 
+**
+
+## 1st Prompt:
+
+** 
 
 Your objective is to scan the following python code, and give a code review with a focus on these areas: the database connections are opened and closed properly, signature verification is performed responsibly, database operations are implemented sufficiently, sufficient input validation is present, and that the webhook is reasonably robust to any unauthorized access, behavior, or attacks. Here is the context of the code: Your colleague or team member was given the following task:
 
@@ -66,15 +71,19 @@ def webhook():
 
     return ("ok", 200)
 
-1st Prompt's Response: 
+**
+
+## 1st Prompt's Response:
+
+** 
 
 Here’s a thorough, security‑focused code review of your colleague’s webhook implementation. I’ll walk through each of the areas you care about—database handling, signature verification, DB operations, input validation, and overall robustness—while also pointing out concrete risks and how to fix them.
 
 ---
 
-# 🔍 **Code Review: Security & Robustness Analysis**
+#  **Code Review: Security & Robustness Analysis**
 
-## 🚨 1. **Database Connections & Resource Handling**
+##  1. **Database Connections & Resource Handling**
 ### **Findings**
 - `get_db()` returns a new SQLite connection, but:
   - The connection is **never closed**.
@@ -107,7 +116,7 @@ finally:
 
 ---
 
-## 🔐 2. **Signature Verification**
+##  2. **Signature Verification**
 ### **Findings**
 - Signature is computed as:
 
@@ -143,7 +152,7 @@ expected = hashlib.sha256(WEBHOOK_SECRET.encode() + body).hexdigest()
 
 ---
 
-## 🛢️ 3. **Database Operations**
+##  3. **Database Operations**
 ### **Findings**
 - SQL queries are built using **string interpolation**:
 
@@ -188,7 +197,7 @@ cur.execute("""
 
 ---
 
-## 🧹 4. **Input Validation**
+##  4. **Input Validation**
 ### **Findings**
 - Payload is parsed without validation.
 - `email` defaults to empty string.
@@ -221,7 +230,7 @@ if role not in {"user", "admin"}:
 
 ---
 
-## 🛡️ 5. **Webhook Security & Robustness**
+##  5. **Webhook Security & Robustness**
 ### **Findings**
 - No rate limiting.
 - No IP allowlist.
@@ -261,7 +270,7 @@ This helps detect attacks.
 
 ---
 
-# 🧾 **Summary of Critical Issues**
+#  **Summary of Critical Issues**
 Here’s a quick severity‑ranked list:
 
 | Severity | Issue |
@@ -336,7 +345,11 @@ Just tell me what direction you want to take next.
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=8080)
 
-1st Prompt's Reflection:
+**
+
+## 1st Prompt's Reflection:
+
+**
 
 1. I intended for the AI to parse the code and produce a report on the code's status while focusing on aspects I explicitly mentioned. 
 These aspects were problems I initially noticed in the code and I used the AI to produce a report for me and to help sort through various solutions to address them.
@@ -345,7 +358,11 @@ It not only confirmed my observed issues, but provided justifications for how ha
 3. I did not have to re-prompt as this response was sufficient for my needs.
 4. I could have modified my approach to be more thorough, by only giving it snippets of the original code and asking it to produce a shorter report on each individual issue I identified.
 
-2nd AI Prompt:
+**
+
+## 2nd AI Prompt:
+
+**
 
 Does this text document cover most of the key weaknesses of the current code that you have revealed to me: The python code was reviewed and these issues have been detected and given feedback for:
 
@@ -381,7 +398,11 @@ Does this text document cover most of the key weaknesses of the current code tha
   There is no rate limiting implemented, so potential attackers can spam our endpoint. 
   ?
 
-2nd Prompt Response: 
+**
+
+## 2nd Prompt Response:
+
+** 
 
 Your summary is **strong**, and it captures the *major* weaknesses of the webhook implementation — but there are a few important gaps and nuances you may want to include so the document feels complete and technically accurate.
 
@@ -513,7 +534,11 @@ These are worth adding if you want a complete and professional assessment.
 
 Just tell me what format you want to move toward.
 
-2nd Prompt Reflection:
+**
+
+## 2nd Prompt Reflection:
+
+**
 
 1. I intended for the AI to reveal weaknesses and missing issues in my code review. I wanted to use its response to expand my current report and reveal as many sources of improvement as possible 
 2. It managed to reveal numerous issues I have not addressed, but many of the issues it mentioned were very specific and could have been grouped under a more general term that described multiple examples. 
@@ -521,7 +546,11 @@ For example, there are many security vulnerabilities in the initial code, but it
 3. I had to reprompt it slightly to include more detail on the justification for some issues it did not explain clearly enough. For example, it did not explain the true implications for a lack of error handling for DB operations or raw JSON inputs.
 4. I could have split this prompt into several shorter prompts that judged my report based on the current issues I explicitly mentioned, and then look for issues I didn't mention.
 
-3rd AI Prompt: 
+**
+
+## 3rd AI Prompt:
+
+** 
 
 These are my suggested changes to the original python code: The python code was reviewed and these issues have been detected and given feedback for:
 
@@ -560,7 +589,11 @@ These are my suggested changes to the original python code: The python code was 
   The payload size is not limited, which can allow for DoS attacks from huge payloads. 
   There is no rate limiting implemented, so potential attackers can spam our endpoint.  . Provide specific code changes that would address these issues.
 
-3rd Prompt Response:
+**
+
+## 3rd Prompt Response:
+
+**
 
 Here you go, Rohaan — a clean, precise set of **specific code changes** that directly address each issue you listed. I’m keeping the fixes minimal but correct, so your teammate can drop them in without rewriting the entire file.
 
@@ -793,7 +826,11 @@ If you want, I can also produce:
 
 Just tell me what direction you want to go.
 
-3rd Prompt Reflection:
+**
+
+## 3rd Prompt Reflection:
+
+**
 
 1. I wanted the AI to give actionable code changes that I could add to my report as recommendations for further improvement. 
 Even though some code changes may have been simple and obvious, there were better options that I was less familiar with initially that the Ai recommended as a better alternative.
@@ -802,7 +839,11 @@ For example, instead of closing the DB connection with db.close(), using a db co
 3. I did not have to reprompt and fix its response as it addressed all of my listed issues while giving multiple changes and what the pros and cons for each approach was.
 4. I could have gave the AI an updated code file with comments listing where I want specific issues or changes to occur and I could potentially have a cleaner code file with each change listed under my own comments and guidelines.
 
-4th AI Prompt:
+**
+
+## 4th AI Prompt:
+
+**
 
 Generate for me a set of unit tests that would span edge cases, potential inputs from an unauthorized attacker such as SQL injections, inputs in formats other than UTF-8, and all other reasonable inputs this webhook can expect to encounter. Keep in mind this original code: # app.py
 import os
@@ -860,7 +901,11 @@ def webhook():
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=8080)
 
-4th Prompt Response:
+**
+
+## 4th Prompt Response:
+
+**
 
 Here you go, Rohaan — a comprehensive, high‑value suite of **unit tests** that directly target the weaknesses of the original webhook code. These tests are designed to:
 
@@ -1084,17 +1129,29 @@ def test_replay_attack(client):
 
 Just tell me how deep you want to go.
 
-4th Prompt Reflection:
+**
+
+## 4th Prompt Reflection:
+
+**
 
 1. I intended to generate a set of unit tests that could be used to verify the code's robustness and accuracy in addressing the previously outlined issues.
 2. The AI actually followed my instructions explicitly and made a complete set of unit tests that can accurately test our given code.
 3. There was no reprompting needed for this prompt.
 
-5th AI Prompt:
+**
+
+## 5th AI Prompt:
+
+**
 
 What is the expected output of running these tests with the original python code?
 
-5th Prompt Response:
+**
+
+## 5th Prompt Response:
+
+**
 
 Here’s the straight, honest answer: **if you run the test suite exactly as written against the *original* webhook code, the results will be a chaotic mix of passes, failures, and outright crashes.**  
 And that’s *good*—because the whole point of these tests is to expose how fragile the original code is.
@@ -1243,17 +1300,29 @@ If you want, I can also generate:
 
 Just tell me what direction you want to go.
 
-5th Prompt Reflection:
+**
+
+## 5th Prompt Reflection:
+
+**
 
 1. I intended to quickly run these unit tests against the original python code to see which tests would currently pass or fail with as a control group.
 2. It followed my instructions and give me an initial state to compare the update code's performance against.
 3. No reprompting was needed.
 
-6th AI Prompt:
+**
+
+## 6th AI Prompt:
+
+**
 
 Now run the same unit tests against this code [updated python code] and show me the expected outputs of each test
 
-6th Prompt Response: 
+**
+
+## 6th Prompt Response:
+
+** 
 
 Here’s the full, precise breakdown of **how each unit test will behave when run against your *fixed* webhook code**. This reflects the exact modifications you requested: constant‑time signature verification, parameterized SQL, proper upsert, context‑managed DB connections, input validation, payload size limits, and rate limiting.
 
@@ -1425,7 +1494,11 @@ If you want, I can:
 
 Just tell me what direction you want to go.
 
-6th Prompt Reflection:
+**
+
+## 6th Prompt Reflection:
+
+**
 
 1. I intended to see how effective the proposed changes were to improving the robustness and accuracy of the given python code. 
 This revealed to me that the changes largely worked and would be suitable to be given as recommendations in a code review.
